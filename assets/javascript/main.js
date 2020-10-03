@@ -8,26 +8,20 @@ let resetButton = document.querySelector("#reset");
 
 let dieRolls = [];
 
-let result = [];
-
 rollButton.addEventListener("click", function () {
   let numOfDiceValue = +numOfDice.value;
   let numOfSidesValue = +numOfSides.value;
-  //   console.log(numOfDiceValue);
   let count = 0,
     total = 0;
-
+  let result = [];
   while (count < numOfDiceValue) {
     result[count] = Math.floor(Math.random() * numOfSidesValue + 1);
     dieRolls.push(result[count]);
     total += dieRolls[count];
     count++;
   }
-  console.log(dieRolls);
   totalDiceRoll.innerHTML = total;
 });
-
-// console.log(dieRolls);
 
 showAllRollsButton.addEventListener("click", function () {
   i = 0;
@@ -38,4 +32,12 @@ showAllRollsButton.addEventListener("click", function () {
     allRolls.appendChild(list);
     i++;
   }
+});
+
+resetButton.addEventListener("click", function () {
+  numOfDice.value = "";
+  numOfSides.value = "";
+  dieRolls = [];
+  totalDiceRoll.innerHTML = "";
+  allRolls.innerHTML = "";
 });
