@@ -4,6 +4,7 @@ let rollButton = document.querySelector("#roll");
 let totalDiceRoll = document.querySelector("#total");
 let showAllRollsButton = document.querySelector("#showallrolls");
 let allRolls = document.querySelector("#allrolls");
+let numDice = document.querySelector("#numdice");
 let resetButton = document.querySelector("#reset");
 
 let dieRolls = [];
@@ -24,7 +25,7 @@ rollButton.addEventListener("click", function () {
 });
 
 showAllRollsButton.addEventListener("click", function () {
-  i = 0;
+  let i = 0;
   while (i < dieRolls.length) {
     let list = document.createElement("li");
     let li = document.createTextNode(dieRolls[i]);
@@ -34,10 +35,30 @@ showAllRollsButton.addEventListener("click", function () {
   }
 });
 
+showAllRollsButton.addEventListener("click", function () {
+  let j = 0;
+  while (j < dieRolls.length) {
+    let dice = document.createElement("div");
+    dice.style.width = "50px";
+    dice.style.height = "50px";
+    dice.style.margin = "10px";
+    dice.style.background = "red";
+    dice.style.color = "white";
+    dice.style.display = "flex";
+    dice.style.justifyContent = "center";
+    dice.style.alignItems = "center";
+    dice.innerHTML = dieRolls[j];
+    numDice.style.display = "flex";
+    numDice.appendChild(dice);
+    j++;
+  }
+});
+
 resetButton.addEventListener("click", function () {
   numOfDice.value = "";
   numOfSides.value = "";
   dieRolls = [];
   totalDiceRoll.innerHTML = "";
   allRolls.innerHTML = "";
+  numDice.innerHTML = "";
 });
